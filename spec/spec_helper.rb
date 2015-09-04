@@ -1,8 +1,7 @@
 require 'simplecov'
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'property_fetcher'
-require_relative './support/factory'
+require 'parse_hub'
 
 RSpec.configure do |config|
   config.filter_run :focus

@@ -21,7 +21,10 @@ class ParseHub
         method,
         domain: domain,
         url: endpoint,
-        options: params
+        options: {
+          api_key: api_key,
+          format: 'json'
+        }.merge(params)
       ).body
     end
 
@@ -29,12 +32,26 @@ class ParseHub
       {}
     end
 
-    def domain
+    def endpoint
       fail NotImplementedError, 'Inheriting class must implement'
     end
 
-    def endpoint
-      fail NotImplementedError, 'Inheriting class must implement'
+    private
+
+    def domain
+      "#{base_url}/projects/#{project_key}"
+    end
+
+    def base_url
+      ParseHub.configuration.base_url
+    end
+
+    def project_key
+      ParseHub.configuration.project_key
+    end
+
+    def api_key
+      ParseHub.configuration.api_key
     end
   end
 end

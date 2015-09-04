@@ -1,9 +1,15 @@
 require 'spec_helper'
+require 'parse_hub/configuration'
 require 'parse_hub/dto'
 
 describe ParseHub::DTO do
   let(:instance) { described_class.new(options: options) }
   let(:options) { { something: :else } }
+
+  before do
+    ParseHub.configuration.api_key = '123'
+    ParseHub.configuration.project_key = '456'
+  end
 
   describe '.get' do
     subject { described_class.get(options) }
@@ -20,7 +26,10 @@ describe ParseHub::DTO do
       expect(ParseHub::API).to receive(:get).with(
         domain: domain,
         url: endpoint,
-        options: {}
+        options: {
+          api_key: '123',
+          format: 'json'
+        }
       ) { double(body: {}) }
 
       expect(subject).to eq({})
@@ -42,7 +51,10 @@ describe ParseHub::DTO do
       expect(ParseHub::API).to receive(:post).with(
         domain: domain,
         url: endpoint,
-        options: {}
+        options: {
+          api_key: '123',
+          format: 'json'
+        }
       ) { double(body: {}) }
 
       expect(subject).to eq({})
@@ -52,14 +64,6 @@ describe ParseHub::DTO do
   describe '#params' do
     it 'returns empty hash' do
       expect(instance.params).to eq({})
-    end
-  end
-
-  describe '#domain' do
-    let(:msg) { 'Inheriting class must implement' }
-
-    it 'raises an error' do
-      expect { instance.domain }.to raise_error(NotImplementedError, msg)
     end
   end
 

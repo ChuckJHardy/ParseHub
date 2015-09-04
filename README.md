@@ -15,12 +15,14 @@ And then execute:
 ## Configuration
 
     ParseHub.configure do |config|
+      config.base_url = "https://www.parsehub.com/api/v3"
       config.api_key = "pol6BFzsASYw4gQBl02b24nt"
-      config.projet_key = "tn42b20lBQg4wYSAszFB6lop"
+      config.project_key = "tn42b20lBQg4wYSAszFB6lop"
       config.clean = true
       config.verbose = true
     end
 
+* `base_url` sets the ParseHub API url `https://www.parsehub.com/api/v2`
 * `api_key` sets the ParseHub API Key `nil`
 * `project_key` sets the ParseHub Project Key `nil`
 * `clean` removes each run when complete `false`
@@ -41,6 +43,8 @@ Find Exchange Rate:
     end
 
 ## Testing
+
+Ensure `PARSE_HUB_API_KEY` and `PARSE_HUB_PROJECT_KEY` environment variable is set when recording VCR cassettes.
 
     # Includes Rubocop
     $ bin/rspec

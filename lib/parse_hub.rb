@@ -2,6 +2,7 @@ require 'parse_hub/configuration'
 require 'parse_hub/error'
 require 'parse_hub/ask'
 require 'parse_hub/answer'
+require 'parse_hub/run'
 
 class ParseHub
   extend Configure
@@ -21,6 +22,14 @@ class ParseHub
 
   def answer
     Answer.for(token: token)
+  end
+
+  def finished?
+    get.fetch(:status, '').include?('complete')
+  end
+
+  def get
+    Run.for(token: token)
   end
 
   private

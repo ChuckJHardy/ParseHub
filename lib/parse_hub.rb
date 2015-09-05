@@ -1,4 +1,4 @@
-require 'logging'
+require 'logger'
 
 require 'parse_hub/configuration'
 require 'parse_hub/error'

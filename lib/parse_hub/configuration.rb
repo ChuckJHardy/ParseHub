@@ -27,7 +27,7 @@ class ParseHub
         self.clean = false
         self.verbose = false
         self.log = false
-        self.logger = Logging.logger(STDOUT)
+        self.logger = Logger.new(STDOUT)
       end
     end
   end

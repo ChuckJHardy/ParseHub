@@ -1,4 +1,4 @@
-# ParseHub
+# ParseHub - [ ![Codeship Status for ChuckJHardy/ParseHub](https://codeship.com/projects/d4ebc830-35e7-0133-2e9b-0e2f5121d0d5/status?branch=master)](https://codeship.com/projects/100845)
 
 Wrapper for ParseHub API
 

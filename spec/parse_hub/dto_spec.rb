@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/configuration'
-require 'parse_hub/dto'
 
 describe ParseHub::DTO do
   let(:instance) { described_class.new(options: options) }

@@ -45,7 +45,7 @@ Find Exchange Rate:
     ph.delete
     # => true
 
-    ph.when(token: token, wait: 2, trys: 5) do |response|
+    ph.promise(token: token, wait: 2, trys: 5) do |response|
       puts response.inspect #=> { ... }
     end
 

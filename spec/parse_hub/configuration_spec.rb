@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/configuration'
 
 describe ParseHub::Configure do
   let(:instance) { Class.new { extend ParseHub::Configure } }

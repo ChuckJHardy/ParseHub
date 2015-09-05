@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/run'
 
 describe ParseHub::Run do
   subject(:run) { described_class.for(token: token) }

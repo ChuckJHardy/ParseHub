@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/ask'
 
 describe ParseHub::Ask do
   subject(:ask) { described_class.for(url: url, template: template) }

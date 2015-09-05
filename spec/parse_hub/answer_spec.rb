@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/answer'
 
 describe ParseHub::Answer do
   subject(:answer) { described_class.for(token: token) }

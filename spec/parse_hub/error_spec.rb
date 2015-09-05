@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/error'
 
 describe ParseHub::Error do
   let(:instance) do

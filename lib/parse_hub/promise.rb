@@ -16,7 +16,6 @@ class ParseHub
       current = 1
 
       while current <= @trys
-        puts 'face'
         if @finished.call
           block.call(@answer.call)
           delete

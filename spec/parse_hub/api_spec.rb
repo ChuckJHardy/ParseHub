@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/api'
 
 describe ParseHub::API do
   describe '.get' do

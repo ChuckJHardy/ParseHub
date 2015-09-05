@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'parse_hub/validate'
 
 describe ParseHub::Validate do
   subject(:validator) do

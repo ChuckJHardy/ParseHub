@@ -16,6 +16,27 @@ describe ParseHub do
     end
   end
 
+  describe '#promise' do
+    let(:instance) { described_class.new(token: token) }
+    let(:token) { 'tE2e9y7J-eyFiOAKaivrxsMl' }
+    let(:wait) { 1 }
+    let(:trys) { 2 }
+
+    it 'returns response body' do
+      VCR.use_cassette('valid/run') do
+        VCR.use_cassette('valid/answer') do
+          VCR.use_cassette('valid/get') do
+            VCR.use_cassette('valid/delete') do
+              instance.promise(wait: wait, trys: trys) do |response|
+                expect(response.keys.length).to be > 0
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
   describe '#answer' do
     subject(:answer) { instance.answer }
 

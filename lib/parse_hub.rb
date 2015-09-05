@@ -3,14 +3,19 @@ require 'parse_hub/error'
 require 'parse_hub/ask'
 require 'parse_hub/answer'
 require 'parse_hub/run'
+require 'parse_hub/promise'
 
 class ParseHub
   extend Configure
+
+  WAIT = 5
+  TRYS = 5
 
   ServiceDownError = Class.new(Error)
   UnauthorizedError = Class.new(Error)
   BadRequest = Class.new(Error)
   MissingRunToken = Class.new(Error)
+  RunLoopsError = Class.new(StandardError)
 
   attr_reader :token
 
@@ -20,6 +25,17 @@ class ParseHub
 
   def self.run(url:, template:)
     Ask.for(url: url, template: template)
+  end
+
+  def promise(wait: WAIT, trys: TRYS, &block)
+    Promise.run(
+      wait: wait,
+      trys: trys,
+      answer: -> { answer },
+      finished: -> { finished? },
+      delete: -> { delete },
+      &block
+    )
   end
 
   def answer

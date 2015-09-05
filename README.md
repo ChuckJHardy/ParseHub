@@ -45,7 +45,8 @@ Find Exchange Rate:
     ph.delete
     # => true
 
-    ph.promise(token: token, wait: 2, trys: 5) do |response|
+    waits = [10, 2, 1, 1, 1] # Each time you can wait for a different period. Defaults to 5
+    ph.promise(token: token, waits: waits, trys: 5) do |response|
       puts response.inspect #=> { ... }
     end
 

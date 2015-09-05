@@ -1,7 +1,9 @@
 class ParseHub
   class Promise
-    def initialize(wait:, trys:, answer:, finished:, delete:)
-      @wait = wait
+    RESCUE_WAIT = 5
+
+    def initialize(waits:, trys:, answer:, finished:, delete:)
+      @waits = waits
       @trys = trys
       @answer = answer
       @finished = finished
@@ -22,7 +24,7 @@ class ParseHub
           break
         end
 
-        wait
+        sleep(@waits.shift || RESCUE_WAIT)
 
         current += 1
       end
@@ -34,10 +36,6 @@ class ParseHub
 
     def delete
       @delete.call if clean?
-    end
-
-    def wait
-      sleep(@wait)
     end
 
     def clean?

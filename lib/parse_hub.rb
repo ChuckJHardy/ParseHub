@@ -8,7 +8,7 @@ require 'parse_hub/promise'
 class ParseHub
   extend Configure
 
-  WAIT = 5
+  WAITS = [5, 5, 2, 1, 3]
   TRYS = 5
 
   ServiceDownError = Class.new(Error)
@@ -27,9 +27,9 @@ class ParseHub
     Ask.for(url: url, template: template)
   end
 
-  def promise(wait: WAIT, trys: TRYS, &block)
+  def promise(waits: WAITS, trys: TRYS, &block)
     Promise.run(
-      wait: wait,
+      waits: waits,
       trys: trys,
       answer: -> { answer },
       finished: -> { finished? },

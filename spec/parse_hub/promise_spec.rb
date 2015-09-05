@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe ParseHub::Promise do
-  let(:wait) { 10 }
-  let(:trys) { 2 }
+  let(:waits) { [10, 2] }
+  let(:trys) { 4 }
   let(:answer) { -> { 'Answer' } }
   let(:finished) { -> { true } }
   let(:delete) { ->{} }
 
   let(:args) do
     {
-      wait: wait,
+      waits: waits,
       trys: trys,
       answer: answer,
       finished: finished,
@@ -19,9 +19,11 @@ describe ParseHub::Promise do
 
   it 'returns response when ready' do
     expect(finished).to receive(:call)
-      .and_return(false, true)
+      .and_return(false, false, false, true)
 
-    expect_any_instance_of(ParseHub::Promise).to receive(:sleep).with(wait)
+    expect_any_instance_of(ParseHub::Promise).to receive(:sleep).with(10)
+    expect_any_instance_of(ParseHub::Promise).to receive(:sleep).with(2)
+    expect_any_instance_of(ParseHub::Promise).to receive(:sleep).with(5)
 
     described_class.run(args) do |response|
       expect(delete).to receive(:call)

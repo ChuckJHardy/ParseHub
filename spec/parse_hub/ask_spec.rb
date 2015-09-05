@@ -23,4 +23,3 @@ describe ParseHub::Ask do
     expect(ask).to eq('token')
   end
 end
-

@@ -12,9 +12,11 @@ class ParseHub
     end
 
     def validate
+      # rubocop:disable Style/RaiseArgs
       fail BadRequest.new(error_args) if bad_request?
       fail ServiceDownError.new(error_args) if down?
       fail UnauthorizedError.new(error_args) if unauthorised?
+      # rubocop:enable Style/RaiseArgs
 
       true
     end
@@ -46,4 +48,3 @@ class ParseHub
     end
   end
 end
-

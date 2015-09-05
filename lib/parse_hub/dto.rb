@@ -21,6 +21,14 @@ class ParseHub
     end
 
     def response(method)
+      log([
+        "-> ParseHub Request: #{method.upcase}",
+        "domain: #{domain}",
+        "endpoint: #{endpoint}",
+        "api_key: #{api_key}",
+        "params: #{params}",
+      ].join("\n"))
+
       API.public_send(
         method,
         domain: domain,
@@ -48,6 +56,10 @@ class ParseHub
 
     def api_key
       ParseHub.configuration.api_key
+    end
+
+    def log(message)
+      ParseHub.configuration.logger.info(message) if ParseHub.configuration.log
     end
   end
 end

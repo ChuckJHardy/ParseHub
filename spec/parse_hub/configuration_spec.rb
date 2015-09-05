@@ -74,6 +74,19 @@ describe ParseHub::Configure do
     end
   end
 
+  describe '#log' do
+    subject { instance.configuration.log }
+
+    it 'returns default' do
+      expect(subject).to eq(false)
+    end
+
+    it 'returns altered' do
+      instance.configure { |config| config.log = true }
+      expect(subject).to eq(true)
+    end
+  end
+
   describe '#logger' do
     subject { instance.configuration.logger }
 

@@ -17,6 +17,7 @@ class ParseHub
         :project_key,
         :clean,
         :verbose,
+        :log,
         :logger
 
       def initialize
@@ -25,6 +26,7 @@ class ParseHub
         self.project_key = nil
         self.clean = false
         self.verbose = false
+        self.log = false
         self.logger = Logging.logger(STDOUT)
       end
     end

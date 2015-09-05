@@ -20,13 +20,19 @@ And then execute:
       config.project_key = "tn42b20lBQg4wYSAszFB6lop"
       config.clean = true
       config.verbose = true
+      config.log = true
+      config.logger = Rails.logger
     end
 
 * `base_url` sets the ParseHub API url `https://www.parsehub.com/api/v2`
 * `api_key` sets the ParseHub API Key `nil`
 * `project_key` sets the ParseHub Project Key `nil`
 * `clean` removes each run when complete `false`
-* `verbose` sets the logger level `false`
+* `verbose` should all output be printed to STDOUT `false`
+* `log` should log message be logged `false`
+* `logger` Logger object. `Logging::Logger`
+
+Default Logger: https://github.com/TwP/logging
 
 ## Usage
 

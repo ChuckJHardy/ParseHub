@@ -8,6 +8,7 @@ ParseHub.configure do |config|
   config.project_key = ENV['PARSE_HUB_PROJECT_KEY']
   config.clean = true
   config.verbose = false
+  config.log = false
 end
 
 RSpec.configure do |config|

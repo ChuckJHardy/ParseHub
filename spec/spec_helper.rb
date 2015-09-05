@@ -4,8 +4,6 @@ $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'parse_hub'
 
 ParseHub.configure do |config|
-  config.api_key = ENV['PARSE_HUB_API_KEY']
-  config.project_key = ENV['PARSE_HUB_PROJECT_KEY']
   config.clean = true
   config.verbose = false
   config.log = false
@@ -25,5 +23,15 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.syntax = :expect
     mocks.verify_partial_doubles = true
+  end
+
+  config.before do
+    ParseHub.configuration.api_key = 'MY_API_KEY'
+    ParseHub.configuration.project_key = 'MY_PROJECT_KEY'
+  end
+
+  config.after do
+    ParseHub.configuration.api_key = nil
+    ParseHub.configuration.project_key = nil
   end
 end

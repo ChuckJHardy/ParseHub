@@ -20,7 +20,7 @@ describe ParseHub::DTO do
         domain: domain,
         url: endpoint,
         options: {
-          api_key: 'tYfV061ZLffZTaUiTeocGZHA',
+          api_key: 'MY_API_KEY',
           format: 'json'
         }
       ) { double(body: {}) }
@@ -45,7 +45,7 @@ describe ParseHub::DTO do
         domain: domain,
         url: endpoint,
         options: {
-          api_key: 'tYfV061ZLffZTaUiTeocGZHA',
+          api_key: 'MY_API_KEY',
           format: 'json'
         }
       ) { double(body: {}) }
@@ -70,7 +70,7 @@ describe ParseHub::DTO do
         domain: domain,
         url: endpoint,
         options: {
-          api_key: 'tYfV061ZLffZTaUiTeocGZHA',
+          api_key: 'MY_API_KEY',
           format: 'json'
         }
       ) { double(body: {}) }

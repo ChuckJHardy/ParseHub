@@ -10,9 +10,9 @@ describe ParseHub::Ask do
   it 'calls API with expected arguments' do
     expect(ParseHub::API).to receive(:post).with(
       domain: 'https://www.parsehub.com/api/v2/',
-      url: 'projects/tn42b20lBQg4wYSAszFB6lop/run',
+      url: 'projects/MY_PROJECT_KEY/run',
       options: {
-        api_key: 'tYfV061ZLffZTaUiTeocGZHA',
+        api_key: 'MY_API_KEY',
         format: 'json',
         start_url: url,
         start_template: template

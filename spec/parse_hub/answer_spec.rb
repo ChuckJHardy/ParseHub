@@ -11,7 +11,7 @@ describe ParseHub::Answer do
       domain: 'https://www.parsehub.com/api/v2/',
       url: "runs/#{token}/data",
       options: {
-        api_key: 'tYfV061ZLffZTaUiTeocGZHA',
+        api_key: 'MY_API_KEY',
         format: 'json'
       }
     ) { response }

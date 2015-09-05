@@ -32,8 +32,18 @@ And then execute:
 
 Find Exchange Rate:
 
-    token = ph.run(url: 'http://google.com', template: 'google')
+    token = ParseHub.run(url: 'http://google.com', template: 'google')
     # => tn42b20lBQg4wYSAszFB6lop
+
+    ph = ParseHub.new(token: token)
+    ph.answer
+    # => { ... }
+
+    ph.finished?
+    # => true
+
+    ph.delete
+    # => true
 
     ph.when(token: token, wait: 2, trys: 5) do |response|
       puts response.inspect #=> { ... }

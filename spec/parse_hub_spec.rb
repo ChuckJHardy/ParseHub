@@ -15,4 +15,17 @@ describe ParseHub do
       end
     end
   end
+
+  describe '#answer' do
+    subject(:answer) { instance.answer }
+
+    let(:instance) { described_class.new(token: token) }
+    let(:token) { 'tE2e9y7J-eyFiOAKaivrxsMl' }
+
+    it 'returns response body' do
+      VCR.use_cassette('valid/answer') do
+        expect(answer.keys.length).to be > 0
+      end
+    end
+  end
 end

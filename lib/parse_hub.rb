@@ -1,6 +1,7 @@
 require 'parse_hub/configuration'
 require 'parse_hub/error'
 require 'parse_hub/ask'
+require 'parse_hub/answer'
 
 class ParseHub
   extend Configure
@@ -10,7 +11,19 @@ class ParseHub
   BadRequest = Class.new(Error)
   MissingRunToken = Class.new(Error)
 
+  def initialize(token:)
+    @token = token
+  end
+
   def self.run(url:, template:)
     Ask.for(url: url, template: template)
   end
+
+  def answer
+    Answer.for(token: token)
+  end
+
+  private
+
+  attr_reader :token
 end

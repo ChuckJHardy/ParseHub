@@ -6,19 +6,14 @@ describe ParseHub::Ask do
 
   let(:url) { 'http://google.com' }
   let(:template) { 'google' }
-  let(:response) { double('Faraday::Response', body: 'token') }
-
-  before do
-    ParseHub.configuration.api_key = '123'
-    ParseHub.configuration.project_key = '456'
-  end
+  let(:response) { double('Faraday::Response', body: { run_token: 'token' }) }
 
   it 'calls API with expected arguments' do
     expect(ParseHub::API).to receive(:post).with(
-      domain: 'https://www.parsehub.com/api/v2/projects/456',
-      url: '/run',
+      domain: 'https://www.parsehub.com/api/v2/',
+      url: 'projects/tn42b20lBQg4wYSAszFB6lop/run',
       options: {
-        api_key: '123',
+        api_key: 'tYfV061ZLffZTaUiTeocGZHA',
         format: 'json',
         start_url: url,
         start_template: template

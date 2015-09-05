@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.parsehub.com/api/v2/projects/<PARSE_HUB_PROJECT_KEY>/run
+    body:
+      encoding: US-ASCII
+      string: api_key=<PARSE_HUB_API_KEY>&format=json&start_url=http%3A%2F%2Fwww.rightmove.co.uk%2Fproperty-for-sale%2Fproperty-46240381.html&start_template=property
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.6.2
+      Date:
+      - Fri, 04 Sep 2015 21:11:10 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status": null, "start_time": null, "project_token": "<PARSE_HUB_PROJECT_KEY>",
+        "start_template": "property", "pages": null, "run_token": "tE2e9y7J-eyFiOAKaivrxsMl",
+        "data_ready": 0, "md5sum": null, "end_time": null, "start_url": "http://www.rightmove.co.uk/property-for-sale/property-46240381.html",
+        "start_value": "{}"}'
+    http_version: 
+  recorded_at: Fri, 04 Sep 2015 21:11:09 GMT
+recorded_with: VCR 2.9.3

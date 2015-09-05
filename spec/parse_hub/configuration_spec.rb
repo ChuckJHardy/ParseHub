@@ -10,7 +10,7 @@ describe ParseHub::Configure do
     let(:new_url) { 'https://www.parsehub.com/api/v5' }
 
     it 'returns default' do
-      expect(subject).to eq('https://www.parsehub.com/api/v2')
+      expect(subject).to eq('https://www.parsehub.com/api/v2/')
     end
 
     it 'returns altered' do

@@ -39,15 +39,7 @@ class ParseHub
     private
 
     def domain
-      "#{base_url}/projects/#{project_key}"
-    end
-
-    def base_url
       ParseHub.configuration.base_url
-    end
-
-    def project_key
-      ParseHub.configuration.project_key
     end
 
     def api_key

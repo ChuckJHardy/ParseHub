@@ -6,11 +6,6 @@ describe ParseHub::DTO do
   let(:instance) { described_class.new(options: options) }
   let(:options) { { something: :else } }
 
-  before do
-    ParseHub.configuration.api_key = '123'
-    ParseHub.configuration.project_key = '456'
-  end
-
   describe '.get' do
     subject { described_class.get(options) }
 
@@ -27,7 +22,7 @@ describe ParseHub::DTO do
         domain: domain,
         url: endpoint,
         options: {
-          api_key: '123',
+          api_key: 'tYfV061ZLffZTaUiTeocGZHA',
           format: 'json'
         }
       ) { double(body: {}) }
@@ -52,7 +47,7 @@ describe ParseHub::DTO do
         domain: domain,
         url: endpoint,
         options: {
-          api_key: '123',
+          api_key: 'tYfV061ZLffZTaUiTeocGZHA',
           format: 'json'
         }
       ) { double(body: {}) }

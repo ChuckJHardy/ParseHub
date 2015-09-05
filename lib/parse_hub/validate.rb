@@ -20,6 +20,7 @@ class ParseHub
     end
 
     private
+
     attr_reader :response
 
     def error_args
@@ -28,7 +29,7 @@ class ParseHub
         url: @url,
         options: @options,
         status: response.status,
-        body: response.body,
+        body: response.body
       }
     end
 

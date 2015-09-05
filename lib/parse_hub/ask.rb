@@ -3,11 +3,15 @@ require 'parse_hub/dto'
 class ParseHub
   class Ask < DTO
     def self.for(options)
-      new(options: options).response(:post)
+      new(options: options).for
+    end
+
+    def for
+      response(:post).fetch(:run_token)
     end
 
     def endpoint
-      "/run"
+      "projects/#{project_key}/run"
     end
 
     private
@@ -25,6 +29,10 @@ class ParseHub
 
     def template
       options.fetch(:template)
+    end
+
+    def project_key
+      ParseHub.configuration.project_key
     end
   end
 end

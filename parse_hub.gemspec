@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Charles J Hardy']
   spec.email         = ['chuckjhardy@gmail.com']
 
-  spec.summary       = "Wrapper for the ParseHub API"
-  spec.description   = "Wrapper for the ParseHub API"
+  spec.summary       = 'Wrapper for the ParseHub API'
+  spec.description   = 'Wrapper for the ParseHub API'
   spec.homepage      = 'https://github.com/ChuckJHardy/ParseHub'
   spec.license       = 'MIT'
 

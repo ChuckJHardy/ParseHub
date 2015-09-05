@@ -18,7 +18,7 @@ class ParseHub
         response: {
           status: status,
           body: body
-        },
+        }
       }
     end
   end

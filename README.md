@@ -32,10 +32,7 @@ And then execute:
 
 Find Exchange Rate:
 
-    ph = ParseHub.new(url: 'http://google.com')
-    # => #<ParseHub::0x007f985c021f10>
-
-    token = ph.run
+    token = ph.run(url: 'http://google.com', template: 'google')
     # => tn42b20lBQg4wYSAszFB6lop
 
     ph.when(token: token, wait: 2, trys: 5) do |response|

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ParseHub::Validate do
   subject(:validator) do
     described_class.with(
+      method: :get,
       domain: 'www',
       url: 'example.com',
       options: { query: 1 },
@@ -13,6 +14,11 @@ describe ParseHub::Validate do
   let(:response) { double('Faraday::Response', status: status, body: body) }
   let(:body) { 'Response Body' }
   let(:status) { 200 }
+
+  before do
+    ParseHub.configuration.log = true
+    expect(ParseHub.configuration.logger).to receive(:info)
+  end
 
   it 'returns true when nothing is wrong' do
     expect(validator).to be_truthy
@@ -76,5 +82,9 @@ describe ParseHub::Validate do
         )
       end
     end
+  end
+
+  after do
+    ParseHub.configuration.log = false
   end
 end

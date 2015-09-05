@@ -6,7 +6,7 @@ require 'parse_hub'
 ParseHub.configure do |config|
   config.clean = true
   config.verbose = false
-  config.log = false
+  config.log = true
 end
 
 RSpec.configure do |config|
@@ -26,11 +26,13 @@ RSpec.configure do |config|
   end
 
   config.before do
+    ParseHub.configuration.log = false
     ParseHub.configuration.api_key = 'MY_API_KEY'
     ParseHub.configuration.project_key = 'MY_PROJECT_KEY'
   end
 
   config.after do
+    ParseHub.configuration.log = false
     ParseHub.configuration.api_key = nil
     ParseHub.configuration.project_key = nil
   end

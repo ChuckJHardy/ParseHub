@@ -21,6 +21,7 @@ class ParseHub
     def get(domain:, url:, options: {})
       connection(domain).get(URI.escape(url), options).tap do |resp|
         Validate.with(
+          method: :get,
           domain: domain,
           url: url,
           options: options,

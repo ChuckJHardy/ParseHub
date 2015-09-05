@@ -9,7 +9,7 @@ describe ParseHub::API do
     let(:options) { { key: 'value' } }
 
     let(:connection) { double('Faraday') }
-    let(:response) { double('Faraday::Response', status: 200) }
+    let(:response) { double('Faraday::Response', status: 200, body: {}) }
 
     it 'calls off to Faraday' do
       expect(Faraday).to receive(:new).with(url: domain) { connection }

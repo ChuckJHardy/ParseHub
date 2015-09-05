@@ -1,6 +1,7 @@
 class ParseHub
   class Validate
-    def initialize(domain:, url:, options:, response:)
+    def initialize(method:, domain:, url:, options:, response:)
+      @method = method
       @domain = domain
       @url = url
       @options = options
@@ -12,6 +13,8 @@ class ParseHub
     end
 
     def validate
+      log
+
       # rubocop:disable Style/RaiseArgs
       fail BadRequest.new(error_args) if bad_request?
       fail ServiceDownError.new(error_args) if down?
@@ -45,6 +48,12 @@ class ParseHub
 
     def unauthorised?
       response.status == 401
+    end
+
+    def log
+      ParseHub.configuration.logger.info(
+        "-> ParseHub Response: #{@method.upcase}\n#{error_args}"
+      ) if ParseHub.configuration.log
     end
   end
 end

@@ -14,6 +14,10 @@ class ParseHub
       new.post(*args)
     end
 
+    def self.delete(*args)
+      new.delete(*args)
+    end
+
     def get(domain:, url:, options: {})
       connection(domain).get(URI.escape(url), options).tap do |resp|
         Validate.with(
@@ -29,6 +33,12 @@ class ParseHub
       connection(domain).post do |req|
         req.url URI.escape(url)
         req.body = URI.encode_www_form(options)
+      end
+    end
+
+    def delete(domain:, url:)
+      connection(domain).delete do |req|
+        req.url URI.escape(url)
       end
     end
 

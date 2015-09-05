@@ -1,11 +1,14 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "property_fetcher"
+require "parse_hub"
 
-PropertyFetcher.configure do |config|
-  config.api_key = ENV['KIMONOLABS_API_KEY']
-  config.verbose = true
+ParseHub.configure do |config|
+  config.api_key = ENV['PARSE_HUB_API_KEY']
+  config.project_key = ENV['PARSE_HUB_PROJECT_KEY']
+  config.clean = true
+  config.verbose = false
+  config.log = false
 end
 
 # You can add fixtures and/or initialization code here to make experimenting

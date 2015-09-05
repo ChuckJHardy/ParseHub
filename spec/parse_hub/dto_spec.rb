@@ -13,6 +13,9 @@ describe ParseHub::DTO do
     before do
       allow_any_instance_of(described_class).to receive(:domain) { domain }
       allow_any_instance_of(described_class).to receive(:endpoint) { endpoint }
+
+      ParseHub.configuration.log = true
+      expect(ParseHub.configuration.logger).to receive(:info)
     end
 
     it 'calls off to API and returns response body' do

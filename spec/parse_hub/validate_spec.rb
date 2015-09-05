@@ -44,6 +44,26 @@ describe ParseHub::Validate do
     end
   end
 
+  describe 'When NotFound' do
+    let(:status) { 404 }
+
+    it 'raises error' do
+      expect { validator }.to raise_error(
+        ParseHub::NotFound
+      ) do |e|
+        expect(e.message).to eq(
+          domain: 'www',
+          url: 'example.com',
+          options: { query: 1 },
+          response: {
+            status: status,
+            body: body
+          }
+        )
+      end
+    end
+  end
+
   describe 'When Unauthorized' do
     let(:status) { 401 }
 

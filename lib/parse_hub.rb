@@ -16,6 +16,7 @@ class ParseHub
   ServiceDownError = Class.new(Error)
   UnauthorizedError = Class.new(Error)
   BadRequest = Class.new(Error)
+  NotFound = Class.new(Error)
   MissingRunToken = Class.new(Error)
   RunLoopsError = Class.new(StandardError)
 

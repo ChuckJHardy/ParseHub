@@ -17,6 +17,7 @@ class ParseHub
 
       # rubocop:disable Style/RaiseArgs
       fail BadRequest.new(error_args) if bad_request?
+      fail NotFound.new(error_args) if not_found?
       fail ServiceDownError.new(error_args) if down?
       fail UnauthorizedError.new(error_args) if unauthorised?
       # rubocop:enable Style/RaiseArgs
@@ -40,6 +41,10 @@ class ParseHub
 
     def down?
       response.status == 504
+    end
+
+    def not_found?
+      response.status == 404
     end
 
     def bad_request?

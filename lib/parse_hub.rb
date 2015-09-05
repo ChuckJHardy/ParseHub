@@ -12,6 +12,8 @@ class ParseHub
   BadRequest = Class.new(Error)
   MissingRunToken = Class.new(Error)
 
+  attr_reader :token
+
   def initialize(token:)
     @token = token
   end
@@ -29,10 +31,10 @@ class ParseHub
   end
 
   def get
-    Run.for(token: token)
+    Run.for(token: token, method: :get)
   end
 
-  private
-
-  attr_reader :token
+  def delete
+    Run.for(token: token, method: :delete).fetch(:run_token, '')
+  end
 end

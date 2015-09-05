@@ -44,20 +44,19 @@ describe ParseHub::API do
   end
 
   describe '.delete' do
-    subject { described_class.delete(domain: domain, url: url) }
+    subject { described_class.delete(domain: domain, url: url, options: options) }
 
     let(:domain) { 'https://example.com' }
     let(:url) { '/endpoint/Some Bad URL' }
+    let(:options) { { key: 'value' } }
 
     let(:connection) { double('Faraday') }
-    let(:request) { double('Faraday::Request') }
-    let(:headers) { {} }
+    let(:response) { double('Faraday::Response', status: 200) }
 
     it 'calls off to Faraday' do
       expect(Faraday).to receive(:new).with(url: domain) { connection }
-      expect(connection).to receive(:delete).and_yield(request)
-
-      expect(request).to receive(:url).with('/endpoint/Some%20Bad%20URL')
+      expect(connection).to receive(:delete)
+        .with('/endpoint/Some%20Bad%20URL', options) { response }
 
       subject
     end

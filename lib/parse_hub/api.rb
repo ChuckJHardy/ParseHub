@@ -36,10 +36,8 @@ class ParseHub
       end
     end
 
-    def delete(domain:, url:)
-      connection(domain).delete do |req|
-        req.url URI.escape(url)
-      end
+    def delete(domain:, url:, options: {})
+      connection(domain).delete(URI.escape(url), options)
     end
 
     private

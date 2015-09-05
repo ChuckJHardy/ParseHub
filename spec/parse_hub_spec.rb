@@ -62,4 +62,17 @@ describe ParseHub do
       end
     end
   end
+
+  describe '#delete' do
+    subject(:delete) { instance.delete }
+
+    let(:instance) { described_class.new(token: token) }
+    let(:token) { 'tE2e9y7J-eyFiOAKaivrxsMl' }
+
+    it 'returns response body' do
+      VCR.use_cassette('valid/delete') do
+        expect(delete).to eq(token)
+      end
+    end
+  end
 end

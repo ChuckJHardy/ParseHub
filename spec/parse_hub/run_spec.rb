@@ -19,4 +19,13 @@ describe ParseHub::Run do
 
     expect(run).to eq({})
   end
+
+  context 'when delete' do
+    subject(:run) { described_class.for(token: token, method: :delete) }
+
+    it 'calls API with expected arguments' do
+      expect(ParseHub::API).to receive(:delete) { response }
+      expect(run).to eq({})
+    end
+  end
 end

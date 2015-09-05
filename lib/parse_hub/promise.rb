@@ -14,7 +14,7 @@ class ParseHub
       new(*args).run(&block)
     end
 
-    def run(&block)
+    def run(&block) # rubocop:disable Metrics/MethodLength
       current = 1
 
       while current <= @trys

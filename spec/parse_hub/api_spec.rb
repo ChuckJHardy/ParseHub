@@ -43,7 +43,9 @@ describe ParseHub::API do
   end
 
   describe '.delete' do
-    subject { described_class.delete(domain: domain, url: url, options: options) }
+    subject do
+      described_class.delete(domain: domain, url: url, options: options)
+    end
 
     let(:domain) { 'https://example.com' }
     let(:url) { '/endpoint/Some Bad URL' }

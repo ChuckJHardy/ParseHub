@@ -5,7 +5,7 @@ describe ParseHub::Promise do
   let(:trys) { 4 }
   let(:answer) { -> { 'Answer' } }
   let(:finished) { -> { true } }
-  let(:delete) { ->{} }
+  let(:delete) { -> {} }
 
   let(:args) do
     {
@@ -35,7 +35,8 @@ describe ParseHub::Promise do
     let(:trys) { 0 }
 
     it 'raises error' do
-      expect { described_class.run(args) }.to raise_error(ParseHub::RunLoopsError)
+      expect { described_class.run(args) }
+        .to raise_error(ParseHub::RunLoopsError)
     end
   end
 
@@ -45,7 +46,7 @@ describe ParseHub::Promise do
     end
 
     it 'does not call delete' do
-      described_class.run(args) do |response|
+      described_class.run(args) do
         expect(delete).to_not receive(:call)
       end
     end

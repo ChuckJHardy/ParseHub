@@ -13,12 +13,12 @@ class ParseHub
 
     class Configuration
       attr_accessor :base_url,
-        :api_key,
-        :project_key,
-        :clean,
-        :verbose,
-        :log,
-        :logger
+                    :api_key,
+                    :project_key,
+                    :clean,
+                    :verbose,
+                    :log,
+                    :logger
 
       def initialize
         self.base_url = 'https://www.parsehub.com/api/v2/'

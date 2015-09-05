@@ -73,4 +73,17 @@ describe ParseHub::Configure do
       expect(subject).to eq(true)
     end
   end
+
+  describe '#logger' do
+    subject { instance.configuration.logger }
+
+    it 'returns default' do
+      expect(subject).to be_an_instance_of(Logging::Logger)
+    end
+
+    it 'returns altered' do
+      instance.configure { |config| config.logger = nil }
+      expect(subject).to be_nil
+    end
+  end
 end

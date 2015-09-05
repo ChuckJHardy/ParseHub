@@ -1,3 +1,5 @@
+require 'logging'
+
 require 'parse_hub/configuration'
 require 'parse_hub/error'
 require 'parse_hub/ask'

@@ -16,6 +16,10 @@ class ParseHub
       new(options: options).response(:post)
     end
 
+    def self.delete(options = {})
+      new(options: options).response(:delete)
+    end
+
     def response(method)
       API.public_send(
         method,

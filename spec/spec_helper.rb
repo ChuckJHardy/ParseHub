@@ -7,7 +7,7 @@ ParseHub.configure do |config|
   config.api_key = ENV['PARSE_HUB_API_KEY']
   config.project_key = ENV['PARSE_HUB_PROJECT_KEY']
   config.clean = true
-  config.verbose = true
+  config.verbose = false
 end
 
 RSpec.configure do |config|

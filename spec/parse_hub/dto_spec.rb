@@ -30,6 +30,10 @@ describe ParseHub::DTO do
 
       expect(subject).to eq({})
     end
+
+    after do
+      ParseHub.configuration.log = false
+    end
   end
 
   describe '.post' do

@@ -68,6 +68,13 @@ describe ParseHub do
         end
       end
     end
+
+    context 'when response is a string' do
+      it 'returns true' do
+        allow(ParseHub::Run).to receive(:for) { '404 Body' }
+        expect(finished).to eq(true)
+      end
+    end
   end
 
   describe '#get' do

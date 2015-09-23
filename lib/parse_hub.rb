@@ -46,11 +46,12 @@ class ParseHub
   end
 
   def finished?
+    return true if get.is_a?(String) # Dont process the run
     get.fetch(:status, '').include?('complete')
   end
 
   def get
-    Run.for(token: token, method: :get)
+    @get ||= Run.for(token: token, method: :get)
   end
 
   def delete

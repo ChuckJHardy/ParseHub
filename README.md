@@ -30,9 +30,7 @@ And then execute:
 * `clean` removes each run when complete `false`
 * `verbose` should all output be printed to STDOUT `false`
 * `log` should log message be logged `false`
-* `logger` Logger object. `Logging::Logger`
-
-Default Logger: https://github.com/TwP/logging
+* `logger` Logger object. `Logger`
 
 ## Usage
 

@@ -1,6 +1,26 @@
 require 'vcr_helper'
 
 describe ParseHub do
+  describe '.new' do
+    subject(:ph_new) { described_class.new(token: token) }
+
+    let(:token) { '' }
+
+    context 'when token is blank' do
+      it 'raises error' do
+        expect { ph_new }.to raise_error(ParseHub::MissingRunToken)
+      end
+    end
+
+    context 'when token is nil' do
+      let(:token) { nil }
+
+      it 'raises error' do
+        expect { ph_new }.to raise_error(ParseHub::MissingRunToken)
+      end
+    end
+  end
+
   describe '.run' do
     subject(:run) { described_class.run(url: url, template: template) }
 

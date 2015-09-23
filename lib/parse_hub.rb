@@ -18,13 +18,13 @@ class ParseHub
   BadResponse = Class.new(Error)
   BadRequest = Class.new(Error)
   NotFound = Class.new(Error)
-  MissingRunToken = Class.new(Error)
+  MissingRunToken = Class.new(StandardError)
   RunLoopsError = Class.new(StandardError)
 
   attr_reader :token
 
   def initialize(token:)
-    # CHUCK - Raise here if no token
+    validate_token(token)
     @token = token
   end
 
@@ -57,5 +57,9 @@ class ParseHub
 
   def delete
     Run.for(token: token, method: :delete).fetch(:run_token, '')
+  end
+
+  def validate_token(str)
+    fail MissingRunToken, str.inspect if str.to_s.empty?
   end
 end

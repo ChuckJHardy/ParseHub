@@ -12,7 +12,7 @@ describe ParseHub::Validate do
   end
 
   let(:response) { double('Faraday::Response', status: status, body: body) }
-  let(:body) { 'Response Body' }
+  let(:body) { {} }
   let(:status) { 200 }
 
   before do
@@ -22,6 +22,26 @@ describe ParseHub::Validate do
 
   it 'returns true when nothing is wrong' do
     expect(validator).to be_truthy
+  end
+
+  describe 'When String Response' do
+    let(:body) { '' }
+
+    it 'raises error' do
+      expect { validator }.to raise_error(
+        ParseHub::BadResponse
+      ) do |e|
+        expect(e.message).to eq(
+          domain: 'www',
+          url: 'example.com',
+          options: { query: 1 },
+          response: {
+            status: status,
+            body: body
+          }
+        )
+      end
+    end
   end
 
   describe 'When BadRequest' do

@@ -15,14 +15,16 @@ class ParseHub
 
   ServiceDownError = Class.new(Error)
   UnauthorizedError = Class.new(Error)
+  BadResponse = Class.new(Error)
   BadRequest = Class.new(Error)
   NotFound = Class.new(Error)
-  MissingRunToken = Class.new(Error)
+  MissingRunToken = Class.new(StandardError)
   RunLoopsError = Class.new(StandardError)
 
   attr_reader :token
 
   def initialize(token:)
+    validate_token(token)
     @token = token
   end
 
@@ -46,7 +48,6 @@ class ParseHub
   end
 
   def finished?
-    return true if get.is_a?(String) # Dont process the run
     get.fetch(:status, '').include?('complete')
   end
 
@@ -56,5 +57,9 @@ class ParseHub
 
   def delete
     Run.for(token: token, method: :delete).fetch(:run_token, '')
+  end
+
+  def validate_token(str)
+    fail MissingRunToken, str.inspect if str.to_s.empty?
   end
 end

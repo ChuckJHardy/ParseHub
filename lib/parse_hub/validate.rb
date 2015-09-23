@@ -16,6 +16,7 @@ class ParseHub
       log
 
       # rubocop:disable Style/RaiseArgs
+      fail BadResponse.new(error_args) if bad_response?
       fail BadRequest.new(error_args) if bad_request?
       fail NotFound.new(error_args) if not_found?
       fail ServiceDownError.new(error_args) if down?
@@ -37,6 +38,10 @@ class ParseHub
         status: response.status,
         body: response.body
       }
+    end
+
+    def bad_response?
+      response.body.is_a?(String)
     end
 
     def down?

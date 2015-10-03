@@ -22,8 +22,9 @@ describe ParseHub do
   end
 
   describe '.run' do
-    subject(:run) { described_class.run(url: url, template: template) }
+    subject(:run) { described_class.run(project_key: project_key, url: url, template: template) }
 
+    let(:project_key) { ENV['PARSE_HUB_PROJECT_KEY'] }
     let(:template) { 'property' }
     let(:url) do
       'http://www.rightmove.co.uk/property-for-sale/property-46240381.html'

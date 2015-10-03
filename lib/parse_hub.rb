@@ -28,8 +28,8 @@ class ParseHub
     @token = token
   end
 
-  def self.run(url:, template:)
-    Ask.for(url: url, template: template)
+  def self.run(project_key:, url:, template:)
+    Ask.for(project_key: project_key, url: url, template: template)
   end
 
   def promise(waits: WAITS, trys: TRYS, &block)

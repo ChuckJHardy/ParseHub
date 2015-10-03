@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe ParseHub::Ask do
-  subject(:ask) { described_class.for(url: url, template: template) }
+  subject(:ask) do
+    described_class.for(project_key: 'MY_PROJECT_KEY', url: url, template: template)
+  end
 
   let(:url) { 'http://google.com' }
   let(:template) { 'google' }

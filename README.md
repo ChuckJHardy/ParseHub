@@ -17,7 +17,6 @@ And then execute:
     ParseHub.configure do |config|
       config.base_url = "https://www.parsehub.com/api/v3"
       config.api_key = "pol6BFzsASYw4gQBl02b24nt"
-      config.project_key = "tn42b20lBQg4wYSAszFB6lop"
       config.clean = true
       config.verbose = true
       config.log = true
@@ -26,7 +25,6 @@ And then execute:
 
 * `base_url` sets the ParseHub API url `https://www.parsehub.com/api/v2`
 * `api_key` sets the ParseHub API Key `nil`
-* `project_key` sets the ParseHub Project Key `nil`
 * `clean` removes each run when complete `false`
 * `verbose` should all output be printed to STDOUT `false`
 * `log` should log message be logged `false`
@@ -36,7 +34,7 @@ And then execute:
 
 Find Exchange Rate:
 
-    token = ParseHub.run(url: 'http://google.com', template: 'google')
+    token = ParseHub.run(project_key: "tn42b20lBQg4wYSAszFB6lop", url: 'http://google.com', template: 'google')
     # => tn42b20lBQg4wYSAszFB6lop
 
     ph = ParseHub.new(token: token)

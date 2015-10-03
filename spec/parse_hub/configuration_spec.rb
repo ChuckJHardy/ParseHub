@@ -33,21 +33,6 @@ describe ParseHub::Configure do
     end
   end
 
-  describe '#project_key' do
-    subject { instance.configuration.project_key }
-
-    let(:new_api_key) { '123' }
-
-    it 'returns default' do
-      expect(subject).to eq(nil)
-    end
-
-    it 'returns altered' do
-      instance.configure { |config| config.project_key = new_api_key }
-      expect(subject).to eq(new_api_key)
-    end
-  end
-
   describe '#clean' do
     subject { instance.configuration.clean }
 

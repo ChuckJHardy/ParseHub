@@ -32,7 +32,7 @@ class ParseHub
     end
 
     def project_key
-      ParseHub.configuration.project_key
+      options.fetch(:project_key)
     end
   end
 end
